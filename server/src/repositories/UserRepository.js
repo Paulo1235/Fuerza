@@ -1,12 +1,35 @@
-const mongoose = require("mongoose");
-const User = require("../models/User");
-
+const User = require('../models/User')
 
 class UserRepository {
-    static async findAllUsers() {
-        const users = await User.find()
-        return users;
-    }
+  static async createUser (name, birth) {
+    const user = await new User({ name, birth })
+    return user
+  }
+
+  static async editNameUser (id, name) {
+    const user = await User.findByIdAndUpdate(id, { name }, { new: true })
+    return user
+  }
+
+  static async editBirthUser (id, birth) {
+    const user = await User.findByIdAndUpdate(id, { birth }, { new: true })
+    return user
+  }
+
+  static async deleteUser (id) {
+    await User.findByIdAndDelete(id)
+    return true
+  }
+
+  static async findAllUsers () {
+    const users = await User.find()
+    return users
+  }
+
+  static async findUserById (id) {
+    const user = await User.findById(id)
+    return user
+  }
 }
 
 module.exports = UserRepository
