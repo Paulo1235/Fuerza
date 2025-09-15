@@ -10,12 +10,20 @@ const userSchema = mongoose.Schema({
   authID: {
     type: mongoose.Types.ObjectId, ref: 'Auth'
   },
-  addressID: {
-    type: mongoose.Types.ObjectId, ref: 'Address'
+  address: {
+    rua: {
+      type: String, required: true
+    },
+    door: {
+      type: String, required: true
+    },
+    cp: {
+      type: String, required: true
+    }
   },
-  typeItemID: {
-    type: mongoose.Types.ObjectId, ref: 'TypeItem'
-  }
+  saved: [{
+    type: mongoose.type.ObjectId, ref: 'Item'
+  }]
 })
 
 const User = mongoose.model('User', userSchema)

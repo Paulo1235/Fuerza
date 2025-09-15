@@ -1,18 +1,13 @@
 const Auth = require('../models/Auth')
 
 class AuthRepository {
-  static async createAuth (email, password, verified) {
-    const auth = await new Auth({email, password, verified})
+  static async createAuth (data) {
+    const auth = await new Auth(data)
     return auth
   }
 
-  static async editEmailAuth (id, email) {
-    const auth = await Auth.findByIdAndUpdate(id, { email }, { new: true })
-    return auth
-  }
-
-  static async editPasswordAuth (id, password) {
-    const auth = await Auth.findByIdAndUpdate(id, { password }, { new: true })
+  static async editAuth (id, data) {
+    const auth = await Auth.findByIdAndUpdate(id, data, { new: true })
     return auth
   }
 

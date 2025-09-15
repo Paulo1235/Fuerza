@@ -1,18 +1,13 @@
 const Sale = require('../models/Sale')
 
 class SaleRepository {
-  static async createSale (quantity, totalValue) {
-    const sale = await new Sale({ quantity, totalValue })
+  static async createSale (data) {
+    const sale = await new Sale(data)
     return sale
   }
 
-  static async editQuantitySale (id, quantity) {
-    const sale = await Sale.findByIdAndUpdate(id, { quantity }, { new: true })
-    return sale
-  }
-
-  static async editTotalValueSale (id, totalValue) {
-    const sale = await Sale.findByIdAndUpdate(id, { totalValue }, { new: true })
+  static async editSale (id, data) {
+    const sale = await Sale.findByIdAndUpdate(id, data, { new: true })
     return sale
   }
 

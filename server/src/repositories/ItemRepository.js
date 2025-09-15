@@ -1,18 +1,13 @@
 const Item = require('../models/Item')
 
 class ItemRepository {
-  static async createItem (nameItem, price) {
-    const item = await new Item({ nameItem, price })
+  static async createItem (data) {
+    const item = await new Item(data)
     return item
   }
 
-  static async editNameItemItem (id, nameItem) {
-    const item = await Item.findByIdAndUpdate(id, { nameItem }, { new: true })
-    return item
-  }
-
-  static async editPriceItem (id, price) {
-    const item = await Item.findByIdAndUpdate(id, { price }, { new: true })
+  static async editItem (id, data) {
+    const item = await Item.findByIdAndUpdate(id, data, { new: true })
     return item
   }
 

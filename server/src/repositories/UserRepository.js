@@ -6,13 +6,8 @@ class UserRepository {
     return user
   }
 
-  static async editNameUser (id, name) {
-    const user = await User.findByIdAndUpdate(id, { name }, { new: true })
-    return user
-  }
-
-  static async editBirthUser (id, birth) {
-    const user = await User.findByIdAndUpdate(id, { birth }, { new: true })
+  static async editUser (id, data) {
+    const user = await User.findByIdAndUpdate(id, data, { new: true })
     return user
   }
 

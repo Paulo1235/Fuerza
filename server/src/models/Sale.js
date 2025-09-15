@@ -7,8 +7,8 @@ const saleSchema = mongoose.Schema({
   totalValue: {
     type: Number, required: true
   },
-  contribuinteID: {
-    type: Number, ref: 'Contribuinte', required: false
+  contribuinte: {
+    type: Number, required: false
   },
   itemID: {
     type: mongoose.Types.ObjectId, ref: 'Item'

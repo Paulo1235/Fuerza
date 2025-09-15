@@ -8,7 +8,28 @@ const itemSchema = mongoose.Schema({
     type: Number, required: true
   },
   typeItemID: {
-    type: mongoose.Types.ObjectId, ref: 'TypeItem'
+    type: String,
+    enum: ['Calções', 'Camisola', 'Pesos']
+  },
+  properties: {
+    size: {
+      type: String, required: true
+    },
+    color: {
+      type: String, required: true
+    },
+    capacity: {
+      type: String, required: true
+    },
+    material: {
+      type: String, required: true
+    },
+    brand: {
+      type: String, required: true
+    },
+    weight: {
+      type: Number, required: true
+    }
   }
 })
 
