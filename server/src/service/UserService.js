@@ -9,11 +9,8 @@ class UserService {
       throw new Error('Birth Date cannot be in the future')
     }
 
-    try {
-      UserRepository.createUser(validatedData)
-    } catch (error) {
-      throw new Error('Error creating User')
-    }
+    const user = await UserRepository.createUser(validatedData)
+    return user
   }
 
   static async editUser (data) {
@@ -22,45 +19,31 @@ class UserService {
       throw new Error('Birth Date cannot be in the future')
     }
 
-    try {
-      UserRepository.editUser(validatedData)
-    } catch (error) {
-      throw new Error('Error editting User')
-    }
+    const user = await UserRepository.editUser(validatedData)
+    return user
   }
 
   static async findAllUsers () {
-    try {
-      UserRepository.findAllUsers()
-    } catch (error) {
-      throw new Error('Error finding all Users')
+    const users = await UserRepository.findAllUsers()
+    if (!users) {
+      throw new Error('Not found any user')
     }
+    return users
   }
 
-  static async deleteUser (data) {
-    // const validatedData = await userSchema.validate(data, { abortEarly: false })
-    // if (data.birthDate > new Date()) {
-    //   throw new Error('Birth Date cannot be in the future')
-    // }
-
-    try {
-      UserRepository.deleteUser(data)
-    } catch (error) {
-      throw new Error('Error editting User')
+  static async deleteUser (id) {
+    if (await UserRepository.deleteUser(id)) {
+      return true
     }
+    return false
   }
 
-  static async findUserById (data) {
-    // const validatedData = await userSchema.validate(data, { abortEarly: false })
-    // if (data.birthDate > new Date()) {
-    //   throw new Error('Birth Date cannot be in the future')
-    // }
-
-    try {
-      UserRepository.findUserById(data)
-    } catch (error) {
-      throw new Error('Error editting User')
+  static async findUserById (id) {
+    const user = await UserRepository.findUserById(id)
+    if (!user) {
+      throw new Error('Not found this user')
     }
+    return user
   }
 }
 
