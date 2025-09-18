@@ -1,4 +1,3 @@
-//  const User = require('../models/User')
 const userSchema = require('../validations/userSchema')
 const UserRepository = require('../repositories/UserRepository')
 
