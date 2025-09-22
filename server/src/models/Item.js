@@ -9,26 +9,29 @@ const itemSchema = mongoose.Schema({
   },
   typeItemID: {
     type: String,
-    enum: ['Calções', 'Camisola', 'Pesos']
+    enum: ['Calções', 'Camisola', 'Pesos', 'Equipamento'],
+    required: true
   },
   properties: {
     size: {
-      type: String, required: true
+      type: String,
+      enum: ['XS', 'S', 'M', 'L', 'XL'],
+      required: false
     },
     color: {
-      type: String, required: true
+      type: String, required: false
     },
     capacity: {
-      type: String, required: true
+      type: String, required: false
     },
     material: {
-      type: String, required: true
+      type: String, required: false
     },
     brand: {
-      type: String, required: true
+      type: String, required: false
     },
     weight: {
-      type: Number, required: true
+      type: Number, required: false
     }
   }
 })
